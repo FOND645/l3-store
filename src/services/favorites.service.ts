@@ -45,7 +45,6 @@ class FavoritesService {
 
   private async _updCounters() {
     const products = await this.get();
-    const count = products.length >= 10 ? '9+' : products.length;
 
     //@ts-ignore
     const Counters = document.querySelectorAll('.js__favorites-counter') as HTMLElement[];
@@ -53,6 +52,7 @@ class FavoritesService {
     const Links = document.querySelectorAll('#favorite_link') as HTMLElement[];
 
     const productsCount = products.length;
+    const count = products.length >= 10 ? '9+' : products.length;
     Links.forEach(($el: HTMLElement) => ($el.style.display = productsCount ? 'flex' : 'none'));
     Counters.forEach(($el: HTMLElement) => ($el.innerText = String(count || '')));
   }
